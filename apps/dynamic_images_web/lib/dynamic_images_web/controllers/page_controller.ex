@@ -18,18 +18,8 @@ defmodule DynamicImagesWeb.PageController do
   def display(conn, %{"id" => id}) do
     i = Repo.get(Image, id)
 
-    case File.exists?(Image.local_path(i)) do
-      true ->
-        Logger.info("File with ID #{i.id} exists")
-
-      false ->
-        Logger.warn(
-          "File with ID #{i.id}, path #{Image.local_path(i)} doesn't exist. Listing image folder content #{
-            inspect(Path.wildcard("uploads/images/*"))
-          }"
-        )
-    end
-
-    conn |> put_resp_content_type(i.content_type) |> send_file(200, Image.local_path(i))
+    conn
+    |> put_resp_content_type(i.content_type)
+    |> send_file(200, Image.local_path(i))
   end
 end

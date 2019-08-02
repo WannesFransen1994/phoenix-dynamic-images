@@ -2,8 +2,17 @@ defmodule DynamicImages.Image do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @upload_directory Application.get_env(:dynamic_images, :uploads_directory) <> "/images"
+  @upload_directory [
+                      File.cwd!(),
+                      "..",
+                      "..",
+                      Application.get_env(:dynamic_images, :uploads_directory),
+                      "images"
+                    ]
+                    |> Path.join()
   alias DynamicImages.Image
+
+  require Logger
 
   schema "images" do
     field :filename, :string
