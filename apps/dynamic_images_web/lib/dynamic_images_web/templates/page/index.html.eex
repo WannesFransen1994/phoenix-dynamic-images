@@ -16,7 +16,7 @@
 <section>
   <%= for i <- @images do %>
   <div class="row">
-    <img class="img-fluid" width="75px" height="75px" src="<%= Routes.page_path(@conn, :display, i) %>" alt="">
+    <%= img_tag Routes.page_path(@conn, :display, i) %>
   </div>
   <% end %>
 </section>
