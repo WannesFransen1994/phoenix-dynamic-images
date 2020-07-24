@@ -10,7 +10,9 @@ defmodule DynamicImagesWeb.PageController do
     render(conn, "index.html", images: images)
   end
 
-  def create(conn, %{"upload" => %Plug.Upload{} = up}) do
+  def create(conn, %{"upload" => up}) do
+    require IEx
+    IEx.pry()
     {:ok, _u} = up |> ImageContext.create_image()
     redirect(conn, to: Routes.page_path(conn, :index))
   end

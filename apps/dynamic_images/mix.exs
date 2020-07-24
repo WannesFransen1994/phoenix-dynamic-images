@@ -37,7 +37,7 @@ defmodule DynamicImages.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.0"},
-      {:mariaex, ">= 0.0.0"},
+      {:myxql, "~> 0.4.1"},
       {:jason, "~> 1.0"}
     ]
   end

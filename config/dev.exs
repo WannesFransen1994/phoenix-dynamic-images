@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :dynamic_images, DynamicImages.Repo,
-  username: "wannes",
+  username: "root",
   password: "t",
   database: "testdb",
-  hostname: "localhost",
+  hostname: "127.0.0.1",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
