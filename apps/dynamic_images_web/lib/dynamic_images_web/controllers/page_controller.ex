@@ -10,10 +10,11 @@ defmodule DynamicImagesWeb.PageController do
     render(conn, "index.html", images: images)
   end
 
-  def create(conn, %{"upload" => up}) do
-    require IEx
-    IEx.pry()
-    {:ok, _u} = up |> ImageContext.create_image()
+  def create(conn, %{"upload" => uploads}) do
+    Enum.each(uploads, fn up ->
+      {:ok, _u} = up |> ImageContext.create_image()
+    end)
+
     redirect(conn, to: Routes.page_path(conn, :index))
   end
 
